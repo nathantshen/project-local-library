@@ -28,7 +28,7 @@ function getMostCommonGenres(books) {
    if (genre) {
      genre.count ++;
    } else {
-     commonGenres.push({ name: book.genre, count: 1});
+     commonGenres.push({name: book.genre, count: 1});
    }
  }
 // sorts and return the top five results (slice)
@@ -42,7 +42,7 @@ function getMostPopularBooks(books) {
   let popularBooks = [];
 //loops through 'books'; creates new objects with 'name' and 'count' keys, and pushes them onto 'popularBooks' array.
   const borrows = books.reduce((accumulate, book) => {
-    popularBooks.push({ name: book.title, count: book.borrows.length });
+    popularBooks.push({name:book.title, count: book.borrows.length });
   }, []);
     let result = popularBooks.sort((countA, countB) => (
     countA.count < countB.count ? 1: -1)).slice(0, 5);
