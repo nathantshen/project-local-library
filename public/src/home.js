@@ -3,49 +3,58 @@ function getTotalBooksCount(books) {
   return books.length;
 }
 
+
 //find count by return length
 function getTotalAccountsCount(accounts) {
    return accounts.length
 }
 
-//variable that is all returned books (filter)
-//return length of returend
+
 function getBooksBorrowedCount(books) {
+//variable that is all returned books (filter)
   const borrowedList = books.filter((book) => book.borrows[0].returned === false);
+//return length of returend
   return borrowedList.length;
 }
 
+
 function getMostCommonGenres(books) {
+//make var array
   const commonGenres = [];
- //Loops through books and finds the matching genre
+//Loops through books and finds the matching genre
  for (let book of books) {
    const genre = commonGenres.find(
      (currentGenre) => currentGenre.name === book.genre
-   );
-  
-  //if true this adds to the existing genre
-  //if false pushes new object to the empty array
+   ); 
+ //if true this adds to the existing genre
    if (genre) {
      genre.count ++;
+ //if false pushes new object to the empty array
    } else {
-     commonGenres.push({name: book.genre, count: 1});
+     commonGenres.push({ name: book.genre, count: 1});
    }
  }
 // sorts and return the top five results (slice)
    let result = commonGenres.sort((countA, countB) => (
     countA.count < countB.count ? 1: -1)).slice(0, 5);
+//return
   return result
 }
+
 
 //same as getMostCommonGenres but for book title
 function getMostPopularBooks(books) {
   let popularBooks = [];
-//loops through 'books'; creates new objects with 'name' and 'count' keys, and pushes them onto 'popularBooks' array.
+//loop through 'books'and perform required function using reduce 
   const borrows = books.reduce((accumulate, book) => {
-    popularBooks.push({name:book.title, count: book.borrows.length });
+//creat new objects with 'name' and 'count' keys
+//push/add them onto 'popularBooks' array.
+    popularBooks.push({ name: book.title, count: book.borrows.length });
   }, []);
+//sort and slice top five 
     let result = popularBooks.sort((countA, countB) => (
     countA.count < countB.count ? 1: -1)).slice(0, 5);
+//return 
   return result
 }
 
@@ -70,9 +79,10 @@ function getMostPopularAuthors(books, authors) {
 //push/add to array
     popularAuthors.push(Object);
   }
-
+//sort and slice top five 
   let result = popularAuthors.sort((countA, countB) => (
     countA.count < countB.count ? 1: -1)).slice(0, 5);
+//return
   return result
 }
 

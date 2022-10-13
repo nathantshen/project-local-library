@@ -9,24 +9,23 @@ function findBookById(books, id) {
 }
 
 //make two arrays using a helper function: non-returned and returned 
-//variables for status
 function partitionBooksByBorrowedStatus(books) {
-  //variables for status
+//variables for status
   const returned = true;
   const borrowed = !returned;
-  //variables for each array (calls to helper functions)
+//variables for each array (calls to helper functions)
   const nonreturnedBooks = returnStatusBook(books, borrowed);
   const returnedBooks = returnStatusBook(books, returned);
-  //retun a combined array with both using spread 
+//retun a combined array with both using spread 
   return  [[...nonreturnedBooks],[...returnedBooks]];
 }
 
 //help function for partitionBooksByBorrowedStatus
 function returnStatusBook(books, status){
- return books.filter(({borrows}) => status === borrows[0].returned)
+//filter if status = returned boolean
+  return books.filter(({borrows}) => status === borrows[0].returned)
 }
 
-//It should return an array of ten or fewer account objects that represents the accounts given by the IDs in the provided book's `borrows` array. However, each account object should include the `returned` entry from the corresponding transaction object in the `borrows` array.
 
 function getBorrowersForBook(book, accounts) {
 //var array
