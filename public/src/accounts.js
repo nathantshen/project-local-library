@@ -7,11 +7,11 @@ function sortAccountsByLastName(accounts) {
 //sort() accounts by last name 
   return accounts.sort((accountA, accountB) =>{
 //make const for lastname of A and Lastname of B
-    const A = accountA.name.last;
-    const B = accountB.name.last;
+    const lastA = accountA.name.last;
+    const lastB = accountB.name.last;
 //return if A < B ? -1 : 1
 // use toLowerCase() 
-    return A.toLowerCase() < B.toLowerCase() ? -1 : 1
+    return lastA.toLowerCase() < lastB.toLowerCase() ? -1 : 1
   });
 }
 
